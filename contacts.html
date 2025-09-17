@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Название вашего сайта</title>
-    <meta name="description" content="Наши контакты">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <title>Контакты - Название вашего сайта</title>
     <meta name="description" content="Связаться с нами">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-   <!-- Уникальное основное содержимое страницы -->
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
-        <!-- Секция 1 с якорем -->
-        <section id="services">
-            <h2>Наши контакты</h2>
-            <p></p>
-    <main>
-        <!-- Простые "хлебные крошки" -->
-        <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> →
-            <span>Контакты</span>
+    <header class="site-header">
+        <a href="index.html" class="site-header__logo">Логотип или название сайта</a>
+        <nav>
+            <ul class="site-nav">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="about.html" class="site-nav__link">О нас</a></li>
+                <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+            </ul>
         </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Хлебные крошки по БЭМ -->
+            <nav aria-label="Хлебные крошки" class="breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Главная</a></li>
+                    <li class="breadcrumbs__item"><span class="breadcrumbs__current">Контакты</span></li>
+                </ol>
+            </nav>
+
+            <h1>Наши контакты</h1>
+            <p>Телефон: +7 (123) 456-78-90</p>
+            <p>Email: info@example.com</p>
+
+            <!-- Пример responsive-изображения -->
+            <img src="cat.jpeg" alt="Кот" class="responsive-img" width="800" height="400" loading="lazy">
+
+            <!-- Пример видео -->
+            <div class="video-container">
+                <iframe width="720" height="405" src="https://rutube.ru/play/embed/e03ca6a69f3104d1961252c46b14b2fc/" style="border: none;" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            </div>
+        </div>
     </main>
+
     <footer>
-        <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
+        <div class="container">
+            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+            <p>Телефон: +7 (123) 456-78-90</p>
+        </div>
     </footer>
 </body>
 </html>
