@@ -73,6 +73,6 @@ button:hover {
 }
 
 /* Подсветка ошибочных полей (установите aria-invalid="true") */
-[aria-invalid="false"] {
+[aria-invalid="true"] {
     border-color: #b00020;
 }
