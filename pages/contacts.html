@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - Название вашего сайта</title>
     <meta name="description" content="Связаться с нами">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../scripts/main.js" defer></script>
 </head>
 <body>
     <header class="site-header">
-        <a href="index.html" class="site-header__logo">Логотип или название сайта</a>
+        <a href="../index.html" class="site-header__logo">Логотип или название сайта</a>
         <nav>
             <ul class="site-nav">
-                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
-                <li class="site-nav__item"><a href="about.html" class="site-nav__link">О нас</a></li>
-                <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="projects.html" class="site-nav__link">Проекты</a></li>
+                <li class="site-nav__item"><a href="diary.html" class="site-nav__link">Дневник</a></li>
+                <li class="site-nav__item"><a href="contacts.html" class="site-nav__link site-nav__link--cta">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -25,17 +27,17 @@
             <!-- Хлебные крошки по БЭМ -->
             <nav aria-label="Хлебные крошки" class="breadcrumbs">
                 <ol class="breadcrumbs__list">
-                    <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Главная</a></li>
+                    <li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Главная</a></li>
                     <li class="breadcrumbs__item"><span class="breadcrumbs__current">Контакты</span></li>
                 </ol>
             </nav>
-
+            <img src="../images/icons/telephone.png" alt="Телефон" class="contact-icon-inline">
             <h1>Наши контакты</h1>
             <p>Телефон: +7 (123) 456-78-90</p>
             <p>Email: info@example.com</p>
 
             <!-- Пример responsive-изображения -->
-            <img src="cat.jpeg" alt="Кот" class="responsive-img" width="800" height="400" loading="lazy">
+            <img src="../images/cat.jpeg" alt="Кот" class="responsive-img" width="800" height="400" loading="lazy">
 
             <!-- Пример видео -->
             <div class="video-container">
@@ -44,10 +46,12 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
             <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
+            <!-- Кнопка переключения темы -->
+            <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>
 </body>

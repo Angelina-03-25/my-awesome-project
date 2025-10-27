@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная - Название вашего сайта</title>
     <meta name="description" content="Краткое описание главной страницы вашего сайта">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <script src="main.js" defer></script>
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/main.js" defer></script>
 </head>
 <body>
     <!-- Шапка сайта -->
@@ -16,8 +16,9 @@
         <nav>
             <ul class="site-nav">
                 <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
-                <li class="site-nav__item"><a href="about.html" class="site-nav__link">О нас</a></li>
-                <li class="site-nav__item"><a href="#contacts" class="site-nav__link site-nav__link--cta">Связаться</a></li>
+                <li class="site-nav__item"><a href="pages/projects.html" class="site-nav__link">Проекты</a></li>
+                <li class="site-nav__item"><a href="pages/diary.html" class="site-nav__link site-nav__link--cta">Дневник</a></li>
+                <li class="site-nav__item"><a href="pages/contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -39,7 +40,7 @@
                 <h2 class="section__title">Портфолио</h2>
                 <p>Кот рыжий смотрите:</p>
                 <!-- Пример responsive-изображения с атрибутами width/height -->
-                <img src="cat.jpeg"  class="responsive-img" width="800" height="400" loading="lazy">
+                <img src="images/cat.jpeg"  class="responsive-img" width="800" height="400" loading="lazy">
             </section>
 
             <!-- Секция 3 с якорем -->
@@ -84,16 +85,18 @@
                 </dialog>
 
                 <p>Наши контакты...</p>
-                <a href="contacts.html">Подробнее</a>
+                <a href="pages/contacts.html">Подробнее</a>
             </section>
         </div>
     </main>
 
     <!-- Подвал сайта -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
             <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
+            <!-- Кнопка переключения темы -->
+            <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>
 </body>

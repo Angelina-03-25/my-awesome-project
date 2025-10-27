@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас - Название вашего сайта</title>
     <meta name="description" content="Узнайте больше о нашей компании и истории">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <header class="site-header">
-        <a href="index.html" class="site-header__logo">Логотип или название сайта</a>
+        <a href="../index.html" class="site-header__logo">Логотип или название сайта</a>
         <nav>
             <ul class="site-nav">
-                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
                 <li class="site-nav__item"><a href="about.html" class="site-nav__link">О нас</a></li>
                 <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
@@ -25,7 +25,7 @@
             <!-- Хлебные крошки -->
             <nav aria-label="Хлебные крошки" class="breadcrumbs">
                 <ol class="breadcrumbs__list">
-                    <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Главная</a></li>
+                    <li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Главная</a></li>
                     <li class="breadcrumbs__item"><span class="breadcrumbs__current">О нас</span></li>
                 </ol>
             </nav>
@@ -42,15 +42,18 @@
                 <h2 class="section__title">Наша команда</h2>
                 <p>Мяу мяу мяу</p>
                 <!-- Пример адаптивного изображения с атрибутами -->
-                <img src="cat.jpeg" class="responsive-img" width="600" height="300" loading="lazy">
+                <img src="../images/cat.jpeg" class="responsive-img" width="600" height="300" loading="lazy">
             </section>
         </div>
     </main>
 
+    <!-- Подвал сайта -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
+            <!-- Кнопка переключения темы -->
+            <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>
 </body>
