@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты - Название вашего сайта</title>
+    <meta name="description" content="Мои проекты">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <!-- УБРАНО: Подключение Bootstrap CSS -->
+    <!-- УБРАНО: Подключение Bootstrap Icons -->
+    <!-- Подключение твоих основных стилей -->
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!-- Подключение твоего основного скрипта -->
+    <script src="../scripts/main.js" defer></script>
+</head>
+<body>
+    <!-- Шапка сайта (универсальная навигация) -->
+    <header class="site-header">
+        <a href="../index.html" class="site-header__logo">
+            <img src="../assets/favicon.ico" alt="Логотип сайта" class="site-header__logo-img">
+        </a>
+        <nav>
+            <ul class="site-nav">
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="projects.html" class="site-nav__link site-nav__link--cta">Проекты</a></li> <!-- Активная ссылка -->
+                <li class="site-nav__item"><a href="diary.html" class="site-nav__link">Дневник</a></li>
+                <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Хлебные крошки -->
+            <nav aria-label="Хлебные крошки" class="breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Главная</a></li>
+                    <li class="breadcrumbs__item"><span class="breadcrumbs__current">Проекты</span></li>
+                </ol>
+            </nav>
+
+            <h1>Мои проекты</h1>
+
+            <!-- Секция фильтров (пока без JS) -->
+            <section class="filters mb-4">
+                <!-- Заменены Bootstrap-кнопки на обычные с БЭМ-классами -->
+                <button class="filter-btn filter-btn--active" data-tech="all">Все</button>
+                <button class="filter-btn" data-tech="html">HTML</button>
+                <button class="filter-btn" data-tech="js">JS</button>
+                <button class="filter-btn" data-tech="react">React</button>
+            </section>
+
+            <!-- Сетка проектов (заменена на CSS Grid) -->
+            <section class="projects-grid">
+                <!-- Пример карточки проекта 1 -->
+                <div class="project-card" data-tech="html css js">
+                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 1">
+                    <div class="project-card__body">
+                        <h5 class="project-card__title">Личный сайт</h5>
+                        <p class="project-card__text">Описание проекта 1...</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag project-card__tag--primary">HTML</span>
+                            <span class="project-card__tag project-card__tag--primary">CSS</span>
+                            <span class="project-card__tag project-card__tag--secondary">JS</span>
+                        </div>
+                        <!-- Кнопка "Подробнее" -->
+                        <button class="project-card__button" onclick="openProjectModal('Личный сайт', 'Полное описание проекта 1...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                    </div>
+                </div>
+                <!-- Пример карточки проекта 2 -->
+                <div class="project-card" data-tech="js">
+                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 2">
+                    <div class="project-card__body">
+                        <h5 class="project-card__title">Todo-приложение</h5>
+                        <p class="project-card__text">Описание проекта 2...</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag project-card__tag--success">JS</span>
+                            <span class="project-card__tag project-card__tag--success">LocalStorage</span>
+                        </div>
+                        <button class="project-card__button" onclick="openProjectModal('Todo-приложение', 'Полное описание проекта 2...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                    </div>
+                </div>
+                <!-- Пример карточки проекта 3 -->
+                <div class="project-card" data-tech="react api">
+                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 3">
+                    <div class="project-card__body">
+                        <h5 class="project-card__title">Интернет-магазин</h5>
+                        <p class="project-card__text">Описание проекта 3...</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag project-card__tag--info">React</span>
+                            <span class="project-card__tag project-card__tag--info">API</span>
+                        </div>
+                        <button class="project-card__button" onclick="openProjectModal('Интернет-магазин', 'Полное описание проекта 3...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Модальное окно для деталей проекта (использует нативный <dialog>) -->
+            <dialog id="projectDetailModal" class="modal" aria-labelledby="projectModalTitle">
+                <!-- Упрощённый вид модального окна, можно стилизовать через .modal и .modal-content в styles.css -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="projectModalTitle" class="modal-title h4">Детали проекта</h2>
+                        <button type="button" class="modal-close-btn" aria-label="Закрыть" onclick="closeProjectModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="projectModalDescription">Описание будет здесь.</p>
+                        <p><strong>Ссылка на сайт:</strong> <a id="projectModalLink" href="#" target="_blank">Сайт</a></p>
+                        <p><strong>Ссылка на GitHub:</strong> <a id="projectModalRepo" href="#" target="_blank">Репозиторий</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="form__button form__button--secondary" onclick="closeProjectModal()">Закрыть</button>
+                    </div>
+                </div>
+            </dialog>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+            <p>Телефон: +7 (123) 456-78-90</p>
+            <!-- Кнопка переключения темы -->
+            <button id="themeToggle" class="theme-toggle">Переключить тему</button>
+        </div>
+    </footer>
+
+    <!-- УБРАНО: Подключение Bootstrap JS -->
+
+    <!-- JavaScript для фильтрации и модального окна -->
+    <script>
+        // --- Функция для фильтрации проектов ---
+        function filterProjects(tech) {
+            const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+            projectCards.forEach(card => {
+                const cardTech = card.getAttribute('data-tech');
+                // Приведение к нижнему регистру для нечувствительности к регистру
+                if (tech === 'all' || cardTech.toLowerCase().includes(tech.toLowerCase())) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // --- Функция для подсветки активной кнопки фильтра ---
+        function setActiveFilter(button) {
+            const filterButtons = document.querySelectorAll('.filters .filter-btn');
+            filterButtons.forEach(btn => {
+                btn.classList.remove('filter-btn--active'); // Убираем активный класс
+                btn.classList.add('filter-btn--default'); // (опционально) добавляем дефолтный, если был
+            });
+            // Добавляем активный класс к нажатой кнопке
+            button.classList.remove('filter-btn--default'); // (опционально) убираем дефолтный
+            button.classList.add('filter-btn--active');
+        }
+
+        // --- Обработчики кликов для фильтров ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const allBtn = document.querySelector('.filters .filter-btn[data-tech="all"]');
+            const htmlBtn = document.querySelector('.filters .filter-btn[data-tech="html"]');
+            const jsBtn = document.querySelector('.filters .filter-btn[data-tech="js"]');
+            const reactBtn = document.querySelector('.filters .filter-btn[data-tech="react"]');
+
+            if (allBtn) allBtn.addEventListener('click', () => { filterProjects('all'); setActiveFilter(allBtn); });
+            if (htmlBtn) htmlBtn.addEventListener('click', () => { filterProjects('html'); setActiveFilter(htmlBtn); });
+            if (jsBtn) jsBtn.addEventListener('click', () => { filterProjects('js'); setActiveFilter(jsBtn); });
+            if (reactBtn) reactBtn.addEventListener('click', () => { filterProjects('react'); setActiveFilter(reactBtn); });
+        });
+
+        // --- Функции для модального окна проекта (уже были в предыдущем коде) ---
+        const projectModal = document.getElementById('projectDetailModal');
+
+        function openProjectModal(title, description, link, repo) {
+            document.getElementById('projectModalTitle').textContent = title;
+            document.getElementById('projectModalDescription').textContent = description;
+            document.getElementById('projectModalLink').href = link;
+            document.getElementById('projectModalRepo').href = repo;
+            projectModal.showModal();
+        }
+
+        function closeProjectModal() {
+            projectModal.close();
+        }
+
+        // Закрытие модального окна проекта по клику на backdrop
+        projectModal.addEventListener('click', (event) => {
+            if (event.target === projectModal) {
+                closeProjectModal();
+            }
+        });
+    </script>
+</body>
+</html>

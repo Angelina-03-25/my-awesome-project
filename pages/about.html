@@ -10,11 +10,15 @@
 </head>
 <body>
     <header class="site-header">
-        <a href="../index.html" class="site-header__logo">Логотип или название сайта</a>
+    <a href="../index.html" class="site-header__logo">
+        <img src="../assets/favicon.ico" alt="Логотип сайта" class="site-header__logo-img">
+    </a>
         <nav>
             <ul class="site-nav">
-                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
-                <li class="site-nav__item"><a href="about.html" class="site-nav__link">О нас</a></li>
+                <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li> <!-- Путь к index.html из папки pages/ -->
+                <li class="site-nav__item"><a href="projects.html" class="site-nav__link">Проекты</a></li>
+                <li class="site-nav__item"><a href="diary.html" class="site-nav__link">Дневник</a></li>
+                <li class="site-nav__item"><a href="about.html" class="site-nav__link site-nav__link--cta">О нас</a></li> <!-- Или "Обо мне" -->
                 <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
         </nav>
@@ -42,7 +46,7 @@
                 <h2 class="section__title">Наша команда</h2>
                 <p>Мяу мяу мяу</p>
                 <!-- Пример адаптивного изображения с атрибутами -->
-                <img src="../images/cat.jpeg" class="responsive-img" width="600" height="300" loading="lazy">
+                <img src="../images/kitties.jpeg" class="responsive-img" width="600" height="300" loading="lazy">
             </section>
         </div>
     </main>

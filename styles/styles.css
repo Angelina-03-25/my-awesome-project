@@ -169,6 +169,13 @@ a:active {
   font-weight: bold;
   text-decoration: none;
   color: white; /* Белый цвет логотипа */
+  
+}
+/* Стили для изображения логотипа */
+.site-header__logo-img {
+    height: 30px; /* Установи желаемую высоту */
+    width: auto; /* Сохраняет пропорции */
+    /* border-radius: var(--radius); /* Опционально: добавить скругление */
 }
 
 /* Навигация */
@@ -603,4 +610,190 @@ body, .navbar-brand, .nav-link, .btn, .card-title, .card-text, .form-label, .for
     margin-right: 8px; /* Отступ справа от иконки до текста */
     vertical-align: middle; /* Выравнивание по центру строки */
     /* filter: invert(100%); /* Опционально: инвертирует цвета (белое станет чёрным и наоборот). Полезно, если хочешь, чтобы иконка "подстраивалась" под тему, но цвета должны быть контрастными) */
+}
+
+/* Стили для страницы проектов */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка */
+  gap: var(--space-lg); /* Используем твою переменную для отступов */
+  margin-top: var(--space-xl);
+}
+
+/* Карточка проекта */
+.project-card {
+  background-color: var(--color-secondary); /* Используем твой светлый розовый фон */
+  border: 1px solid var(--color-primary); /* Используем твой акцентный цвет */
+  border-radius: var(--radius); /* Используем твою переменную для скругления */
+  box-shadow: var(--shadow-card); /* Используем твою переменную для тени */
+  overflow: hidden; /* Скрываем выступающие части изображения */
+  display: flex;
+  flex-direction: column; /* Располагаем элементы внутри карточки вертикально */
+  height: 100%; /* Карточки одной высоты */
+}
+
+.project-card__img {
+  width: 100%;
+  height: 200px; /* Фиксированная высота для изображения */
+  object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции */
+  border-bottom: 1px solid var(--color-primary); /* Тонкая линия под изображением */
+}
+
+.project-card__body {
+  padding: var(--space-md); /* Внутренние отступы */
+  flex-grow: 1; /* Растягиваем тело карточки, чтобы кнопка была внизу */
+  display: flex;
+  flex-direction: column; /* Располагаем элементы внутри тела вертикально */
+}
+
+.project-card__title {
+  margin: 0 0 var(--space-sm) 0; /* Отступы */
+  color: var(--color-primary); /* Цвет заголовка */
+  font-size: var(--font-size-lg); /* Размер шрифта */
+}
+
+.project-card__text {
+  margin: 0 0 var(--space-md) 0; /* Отступы */
+  flex-grow: 1; /* Растягиваем текст, чтобы кнопка была внизу */
+  color: var(--color-fg); /* Цвет текста */
+}
+
+.project-card__tags {
+  margin-bottom: var(--space-md); /* Отступ под тегами */
+}
+
+.project-card__tag {
+  display: inline-block; /* Располагаем теги в строку */
+  padding: 0.25rem 0.5rem; /* Внутренние отступы */
+  margin-right: var(--space-sm); /* Отступ между тегами */
+  border-radius: var(--radius-sm); /* Скругление */
+  font-size: 0.875rem; /* Размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+  color: white; /* Цвет текста */
+}
+
+/* Модификаторы для тегов */
+.project-card__tag--primary {
+  background-color: var(--color-primary); /* Основной цвет */
+}
+.project-card__tag--secondary {
+  background-color: var(--color-muted); /* Вторичный цвет */
+}
+.project-card__tag--success {
+  background-color: var(--color-success); /* Цвет успеха */
+}
+.project-card__tag--info {
+  background-color: var(--color-warning); /* Цвет информации (используем warning) */
+}
+
+.project-card__button {
+  /* Используем стили из existing .form__button */
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: inherit;
+  transition: all 0.3s ease; /* Плавный переход */
+  background: var(--color-primary); /* Основной цвет фона */
+  color: white; /* Белый текст */
+  width: 100%; /* Кнопка на всю ширину карточки */
+}
+
+.project-card__button:hover,
+.project-card__button:focus-visible {
+  filter: brightness(0.95);
+}
+
+/* Стили для кнопок фильтров */
+.filters {
+  margin-bottom: var(--space-lg); /* Отступ снизу */
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-md); /* Внутренние отступы */
+  border: 2px solid var(--color-primary); /* Граница */
+  background-color: var(--color-bg); /* Фон */
+  color: var(--color-fg); /* Цвет текста */
+  border-radius: var(--radius); /* Скругление */
+  cursor: pointer;
+  font-family: var(--font-body); /* Шрифт */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+  margin-right: var(--space-sm); /* Отступ между кнопками */
+}
+
+.filter-btn:hover {
+  background-color: var(--color-primary); /* Фон при наведении */
+  color: white; /* Цвет текста при наведении */
+}
+
+/* Модификатор для активной кнопки */
+.filter-btn--active {
+  background-color: var(--color-primary); /* Фон активной кнопки */
+  color: white; /* Цвет текста активной кнопки */
+}
+
+/* Стили для модального окна (если нужно что-то уточнить) */
+.modal-content {
+  /* Эти стили уже частично определены в общем .modal и dialog */
+  background-color: var(--color-bg); /* Цвет фона */
+  color: var(--color-fg); /* Цвет текста */
+  border-radius: var(--radius-lg); /* Скругление */
+  box-shadow: var(--shadow-hover); /* Тень */
+  display: flex;
+  flex-direction: column; /* Располагаем элементы вертикально */
+  max-width: 500px; /* Максимальная ширина */
+  width: 90vw; /* Ширина 90% от viewport */
+  max-height: 90vh; /* Максимальная высота */
+  overflow-y: auto; /* Прокрутка, если контент большой */
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); /* Градиентный фон */
+  color: white; /* Цвет текста */
+  padding: var(--space-md); /* Внутренние отступы */
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0; /* Скругление сверху */
+  margin: 0; /* Убираем отступы */
+  display: flex; /* Используем flex */
+  justify-content: space-between; /* Распределяем элементы */
+  align-items: center; /* Выравнивание по центру */
+}
+
+.modal-title {
+  margin: 0; /* Убираем отступы */
+  color: white; /* Цвет заголовка */
+  font-size: var(--font-size-xl); /* Размер шрифта */
+}
+
+.modal-close-btn {
+  background: none; /* Убираем фон */
+  border: none; /* Убираем границу */
+  color: white; /* Цвет текста */
+  font-size: var(--font-size-xl); /* Размер шрифта */
+  cursor: pointer; /* Курсор указатель */
+  padding: 0; /* Убираем отступы */
+  width: 30px; /* Фиксированная ширина */
+  height: 30px; /* Фиксированная высота */
+  display: flex; /* Используем flex */
+  justify-content: center; /* Центрируем */
+  align-items: center; /* Центрируем */
+  border-radius: 50%; /* Круглая кнопка */
+  transition: background-color 0.3s ease; /* Плавный переход */
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Фон при наведении */
+}
+
+.modal-body {
+  padding: var(--space-lg); /* Внутренние отступы */
+  flex-grow: 1; /* Растягиваем тело */
+}
+
+.modal-footer {
+  padding: var(--space-md) var(--space-lg); /* Внутренние отступы */
+  border-top: 1px solid var(--color-muted); /* Линия сверху */
+  display: flex; /* Используем flex */
+  justify-content: flex-end; /* Выравнивание по правому краю */
+  background-color: var(--color-secondary); /* Фон футера */
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg); /* Скругление снизу */
 }
