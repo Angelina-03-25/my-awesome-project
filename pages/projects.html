@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты - Название вашего сайта</title>
+    <title>Проекты - Личная страница</title>
     <meta name="description" content="Мои проекты">
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
-    <!-- УБРАНО: Подключение Bootstrap CSS -->
-    <!-- УБРАНО: Подключение Bootstrap Icons -->
-    <!-- Подключение твоих основных стилей -->
     <link rel="stylesheet" href="../styles/styles.css">
-    <!-- Подключение твоего основного скрипта -->
     <script src="../scripts/main.js" defer></script>
 </head>
 <body>
-    <!-- Шапка сайта (универсальная навигация) -->
     <header class="site-header">
         <a href="../index.html" class="site-header__logo">
             <img src="../assets/favicon.ico" alt="Логотип сайта" class="site-header__logo-img">
@@ -31,7 +26,6 @@
 
     <main>
         <div class="container">
-            <!-- Хлебные крошки -->
             <nav aria-label="Хлебные крошки" class="breadcrumbs">
                 <ol class="breadcrumbs__list">
                     <li class="breadcrumbs__item"><a href="../index.html" class="breadcrumbs__link">Главная</a></li>
@@ -41,9 +35,7 @@
 
             <h1>Мои проекты</h1>
 
-            <!-- Секция фильтров (пока без JS) -->
             <section class="filters mb-4">
-                <!-- Заменены Bootstrap-кнопки на обычные с БЭМ-классами -->
                 <button class="filter-btn filter-btn--active" data-tech="all">Все</button>
                 <button class="filter-btn" data-tech="html">HTML</button>
                 <button class="filter-btn" data-tech="js">JS</button>
@@ -52,45 +44,59 @@
 
             <!-- Сетка проектов (заменена на CSS Grid) -->
             <section class="projects-grid">
-                <!-- Пример карточки проекта 1 -->
                 <div class="project-card" data-tech="html css js">
-                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 1">
+                    <img src="../images/kitty1.jpg" class="project-card__img" alt="Проект 1">
                     <div class="project-card__body">
-                        <h5 class="project-card__title">Личный сайт</h5>
-                        <p class="project-card__text">Описание проекта 1...</p>
+                        <h5 class="project-card__title">Основы мира "Hello Kitty"</h5>
+                        <p class="project-card__text">Погрузись в очаровательный мир Китти и узнай, как быть милее и веселее!</p>
                         <div class="project-card__tags">
                             <span class="project-card__tag project-card__tag--primary">HTML</span>
                             <span class="project-card__tag project-card__tag--primary">CSS</span>
                             <span class="project-card__tag project-card__tag--secondary">JS</span>
                         </div>
                         <!-- Кнопка "Подробнее" -->
-                        <button class="project-card__button" onclick="openProjectModal('Личный сайт', 'Полное описание проекта 1...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                        <button class="project-card__button" onclick="openProjectModal('Основы мира &quot;Hello Kitty&quot;', 'Погрузись в волшебный и сказочный мир Китти! Узнай, как быть милее, добрее и как устроить идеальный пикник с подругами. Курс включает уроки по этикету, дружбе и изготовлению бантов. Стоимость счастья: 100 сердечек.', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
                 <!-- Пример карточки проекта 2 -->
                 <div class="project-card" data-tech="js">
-                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 2">
+                    <img src="../images/mymelody.jpg" class="project-card__img" alt="Проект 2">
                     <div class="project-card__body">
-                        <h5 class="project-card__title">Todo-приложение</h5>
-                        <p class="project-card__text">Описание проекта 2...</p>
+                        <h5 class="project-card__title">Курс "Погружение в лор вселенной Onegai! My Melody"</h5>
+                        <p class="project-card__text">Открой для себя глубокую и трогательную историю Мелоди и её друзей.</p>
                         <div class="project-card__tags">
                             <span class="project-card__tag project-card__tag--success">JS</span>
                             <span class="project-card__tag project-card__tag--success">LocalStorage</span>
                         </div>
-                        <button class="project-card__button" onclick="openProjectModal('Todo-приложение', 'Полное описание проекта 2...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                        <button class="project-card__button" onclick="openProjectModal('Курс &quot;Погружение в лор вселенной Onegai! My Melody&quot;', 'Открой глубокую и трогательную историю Мелоди и её друзей. Исследуй тайны Радужного замка и помоги Мелоди победить тьму в сердцах. Стоимость счастья: 50 сердечек', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
                 <!-- Пример карточки проекта 3 -->
                 <div class="project-card" data-tech="react api">
-                    <img src="https://via.placeholder.com/300x200" class="project-card__img" alt="Проект 3">
+                    <img src="../images/kitty2.jpg" class="project-card__img" alt="Проект 3">
                     <div class="project-card__body">
-                        <h5 class="project-card__title">Интернет-магазин</h5>
-                        <p class="project-card__text">Описание проекта 3...</p>
+                        <h5 class="project-card__title">Услуга "ХеллоуКитирование"</h5>
+                        <p class="project-card__text">Окружим вашего врага Хеллоу Китти</p>
                         <div class="project-card__tags">
                             <span class="project-card__tag project-card__tag--info">React</span>
                             <span class="project-card__tag project-card__tag--info">API</span>
                         </div>
-                        <button class="project-card__button" onclick="openProjectModal('Интернет-магазин', 'Полное описание проекта 3...', 'https://example.com', 'https://github.com')">Подробнее</button>
+                        <button class="project-card__button" onclick="openProjectModal('Услуга &quot;ХеллоуКитирование&quot;', 'Окружим вашего врага таким количеством Хеллоу Китти, что он сойдет с ума и не сможет больше мешать вашей сладкой розовой жизни.  Стоимость: 500 сердечек или коробка печенья', 'https://example.com', 'https://github.com')">Подробнее</button>
+                    </div>
+                </div>
+                <!-- Пример карточки проекта 4 -->
+                <div class="project-card" data-tech="js">
+                    <img src="../images/miffy.jpg" class="project-card__img" alt="Проект 4">
+                    <div class="project-card__body">
+                        <h5 class="project-card__title">Услуга "Поздравление с днём рождения в костюме кролика Miffy"</h5>
+                        <p class="project-card__text">Самое милое поздравление! Встреть день рождения с нежностью Миффи</p>
+                        <div class="project-card__tags">
+                            <span class="project-card__tag project-card__tag--primary">HTML</span>
+                            <span class="project-card__tag project-card__tag--primary">CSS</span>
+                            <span class="project-card__tag project-card__tag--secondary">JS</span>
+                        </div>
+                        <!-- Кнопка "Подробнее" -->
+                        <button class="project-card__button" onclick="openProjectModal('Услуга &quot;Поздравление с днём рождения в костюме кролика Miffy&quot;', 'Самое нежное и необычное поздравление! Встреть свой День рождения с особой торжественностью — в образе любимого кролика Миффи. В подарок — воздушный шарик и памятное фото. Цена счастья: 1000 сердечек и один кусочек торта.', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
             </section>
@@ -119,16 +125,14 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+            <p>&copy; 2025 Личная страница. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
             <!-- Кнопка переключения темы -->
             <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>
 
-    <!-- УБРАНО: Подключение Bootstrap JS -->
 
-    <!-- JavaScript для фильтрации и модального окна -->
     <script>
         // --- Функция для фильтрации проектов ---
         function filterProjects(tech) {
@@ -150,10 +154,9 @@
             const filterButtons = document.querySelectorAll('.filters .filter-btn');
             filterButtons.forEach(btn => {
                 btn.classList.remove('filter-btn--active'); // Убираем активный класс
-                btn.classList.add('filter-btn--default'); // (опционально) добавляем дефолтный, если был
+                // btn.classList.add('filter-btn--default'); // (опционально) добавляем дефолтный, если был
             });
-            // Добавляем активный класс к нажатой кнопке
-            button.classList.remove('filter-btn--default'); // (опционально) убираем дефолтный
+            // btn.classList.remove('filter-btn--default'); // (опционально) убираем дефолтный
             button.classList.add('filter-btn--active');
         }
 
