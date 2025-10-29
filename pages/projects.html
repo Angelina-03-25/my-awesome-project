@@ -17,7 +17,7 @@
         <nav>
             <ul class="site-nav">
                 <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Главная</a></li>
-                <li class="site-nav__item"><a href="projects.html" class="site-nav__link site-nav__link--cta">Проекты</a></li> <!-- Активная ссылка -->
+                <li class="site-nav__item"><a href="projects.html" class="site-nav__link site-nav__link--cta">Проекты</a></li> 
                 <li class="site-nav__item"><a href="diary.html" class="site-nav__link">Дневник</a></li>
                 <li class="site-nav__item"><a href="contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
@@ -42,7 +42,6 @@
                 <button class="filter-btn" data-tech="react">React</button>
             </section>
 
-            <!-- Сетка проектов (заменена на CSS Grid) -->
             <section class="projects-grid">
                 <div class="project-card" data-tech="html css js">
                     <img src="../images/kitty1.jpg" class="project-card__img" alt="Проект 1">
@@ -54,11 +53,11 @@
                             <span class="project-card__tag project-card__tag--primary">CSS</span>
                             <span class="project-card__tag project-card__tag--secondary">JS</span>
                         </div>
-                        <!-- Кнопка "Подробнее" -->
+
                         <button class="project-card__button" onclick="openProjectModal('Основы мира &quot;Hello Kitty&quot;', 'Погрузись в волшебный и сказочный мир Китти! Узнай, как быть милее, добрее и как устроить идеальный пикник с подругами. Курс включает уроки по этикету, дружбе и изготовлению бантов. Стоимость счастья: 100 сердечек.', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
-                <!-- Пример карточки проекта 2 -->
+
                 <div class="project-card" data-tech="js">
                     <img src="../images/mymelody.jpg" class="project-card__img" alt="Проект 2">
                     <div class="project-card__body">
@@ -71,7 +70,7 @@
                         <button class="project-card__button" onclick="openProjectModal('Курс &quot;Погружение в лор вселенной Onegai! My Melody&quot;', 'Открой глубокую и трогательную историю Мелоди и её друзей. Исследуй тайны Радужного замка и помоги Мелоди победить тьму в сердцах. Стоимость счастья: 50 сердечек', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
-                <!-- Пример карточки проекта 3 -->
+
                 <div class="project-card" data-tech="react api">
                     <img src="../images/kitty2.jpg" class="project-card__img" alt="Проект 3">
                     <div class="project-card__body">
@@ -84,7 +83,7 @@
                         <button class="project-card__button" onclick="openProjectModal('Услуга &quot;ХеллоуКитирование&quot;', 'Окружим вашего врага таким количеством Хеллоу Китти, что он сойдет с ума и не сможет больше мешать вашей сладкой розовой жизни.  Стоимость: 500 сердечек или коробка печенья', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
-                <!-- Пример карточки проекта 4 -->
+
                 <div class="project-card" data-tech="js">
                     <img src="../images/miffy.jpg" class="project-card__img" alt="Проект 4">
                     <div class="project-card__body">
@@ -95,15 +94,15 @@
                             <span class="project-card__tag project-card__tag--primary">CSS</span>
                             <span class="project-card__tag project-card__tag--secondary">JS</span>
                         </div>
-                        <!-- Кнопка "Подробнее" -->
+
                         <button class="project-card__button" onclick="openProjectModal('Услуга &quot;Поздравление с днём рождения в костюме кролика Miffy&quot;', 'Самое нежное и необычное поздравление! Встреть свой День рождения с особой торжественностью — в образе любимого кролика Миффи. В подарок — воздушный шарик и памятное фото. Цена счастья: 1000 сердечек и один кусочек торта.', 'https://example.com', 'https://github.com')">Подробнее</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Модальное окно для деталей проекта (использует нативный <dialog>) -->
+
             <dialog id="projectDetailModal" class="modal" aria-labelledby="projectModalTitle">
-                <!-- Упрощённый вид модального окна, можно стилизовать через .modal и .modal-content в styles.css -->
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 id="projectModalTitle" class="modal-title h4">Детали проекта</h2>
@@ -127,20 +126,20 @@
         <div class="container">
             <p>&copy; 2025 Личная страница. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
-            <!-- Кнопка переключения темы -->
+
             <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>
 
 
     <script>
-        // --- Функция для фильтрации проектов ---
+
         function filterProjects(tech) {
             const projectCards = document.querySelectorAll('.projects-grid .project-card');
 
             projectCards.forEach(card => {
                 const cardTech = card.getAttribute('data-tech');
-                // Приведение к нижнему регистру для нечувствительности к регистру
+
                 if (tech === 'all' || cardTech.toLowerCase().includes(tech.toLowerCase())) {
                     card.style.display = 'block';
                 } else {
@@ -149,18 +148,17 @@
             });
         }
 
-        // --- Функция для подсветки активной кнопки фильтра ---
+
         function setActiveFilter(button) {
             const filterButtons = document.querySelectorAll('.filters .filter-btn');
             filterButtons.forEach(btn => {
-                btn.classList.remove('filter-btn--active'); // Убираем активный класс
-                // btn.classList.add('filter-btn--default'); // (опционально) добавляем дефолтный, если был
+                btn.classList.remove('filter-btn--active'); 
+
             });
-            // btn.classList.remove('filter-btn--default'); // (опционально) убираем дефолтный
+
             button.classList.add('filter-btn--active');
         }
 
-        // --- Обработчики кликов для фильтров ---
         document.addEventListener('DOMContentLoaded', function() {
             const allBtn = document.querySelector('.filters .filter-btn[data-tech="all"]');
             const htmlBtn = document.querySelector('.filters .filter-btn[data-tech="html"]');
@@ -173,7 +171,7 @@
             if (reactBtn) reactBtn.addEventListener('click', () => { filterProjects('react'); setActiveFilter(reactBtn); });
         });
 
-        // --- Функции для модального окна проекта (уже были в предыдущем коде) ---
+
         const projectModal = document.getElementById('projectDetailModal');
 
         function openProjectModal(title, description, link, repo) {
@@ -188,7 +186,7 @@
             projectModal.close();
         }
 
-        // Закрытие модального окна проекта по клику на backdrop
+
         projectModal.addEventListener('click', (event) => {
             if (event.target === projectModal) {
                 closeProjectModal();
