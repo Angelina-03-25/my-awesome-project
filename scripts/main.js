@@ -119,3 +119,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// --- Функции для модального окна добавления записи в дневник (pages/diary.html) ---
+let addEntryModalInstance = null; // Глобальная переменная для хранения ссылки на модалку
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Пытаемся найти модальное окно добавления записи на странице
+    const modalElement = document.getElementById('addEntryModal');
+    if (modalElement) {
+        // Если нашли, сохраняем ссылку
+        addEntryModalInstance = modalElement;
+
+        // Добавляем обработчик клика на backdrop для закрытия
+        addEntryModalInstance.addEventListener('click', (event) => {
+            if (event.target === addEntryModalInstance) {
+                closeAddEntryModal();
+            }
+        });
+    }
+    // Если не нашли - ничего не делаем, видимо, это не та страница
+});
+
+function openAddEntryModal() {
+    if (addEntryModalInstance) {
+        // Очищаем форму перед открытием
+        const form = document.getElementById('addEntryForm');
+        if (form) {
+            form.reset();
+        }
+        // Открываем модальное окно
+        addEntryModalInstance.showModal();
+    } else {
+        console.error("Модальное окно 'addEntryModal' не найдено на этой странице.");
+        // alert("Ошибка: Модальное окно не найдено!"); // Опционально, для отладки
+    }
+}
+
+function closeAddEntryModal() {
+    if (addEntryModalInstance) {
+        addEntryModalInstance.close();
+    }
+}
+
+// --- Функция для обработки отправки формы новой записи (pages/diary.html) ---
+function submitNewEntry() {
+    if (!addEntryModalInstance) {
+         console.error("Модальное окно 'addEntryModal' не найдено.");
+         return;
+    }
+    const form = document.getElementById('addEntryForm');
+    if (!form) {
+         console.error("Форма 'addEntryForm' не найдена.");
+         return;
+    }
+    const formData = new FormData(form);
+
+    // Простая валидация
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    // Собираем данные формы
+    const data = {
+        date: formData.get('entryDate'),
+        topic: formData.get('entryTopic'),
+        content: formData.get('entryContent'),
+        tags: formData.get('entryTags').split(',').map(tag => tag.trim()).filter(tag => tag),
+        status: formData.get('entryStatus')
+    };
+
+    // В реальном приложении здесь был бы AJAX-запрос или добавление в localStorage/IndexedDB
+    console.log('Новая запись в дневник (из main.js):', data);
+    alert(`Запись "${data.topic}" добавлена! (Это демо, данные не сохранены на сервере)`);
+
+    // Закрываем модальное окно
+    closeAddEntryModal();
+    // Здесь можно добавить логику для обновления DOM (добавления новой записи на страницу)
+    // Пока просто перезагрузим страницу, чтобы увидеть эффект (не лучший способ, но для демо сойдёт)
+    // location.reload();
+}
