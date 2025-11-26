@@ -43,8 +43,22 @@
             </section>
 
             <section class="projects-grid">
+                <!-- Пример карточки проекта 1 -->
                 <div class="project-card" data-tech="html css js">
-                    <img src="../images/kitty1.jpg" class="project-card__img" alt="Проект 1">
+                    <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                    <img 
+                        src="../images/kitty1.jpg" 
+                        srcset="
+                            ../images/kitty1_small.jpg 400w,
+                            ../images/kitty1_medium.jpg 800w,
+                            ../images/kitty1.jpg 1200w
+                        "
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 30vw, 25vw"
+                        class="project-card__img" 
+                        width="300" 
+                        height="200" 
+                        loading="lazy"
+                        alt="Проект 1: Основы мира Hello Kitty">
                     <div class="project-card__body">
                         <h5 class="project-card__title">Основы мира "Hello Kitty"</h5>
                         <p class="project-card__text">Погрузись в очаровательный мир Китти и узнай, как быть милее и веселее!</p>
@@ -58,8 +72,22 @@
                     </div>
                 </div>
 
+                <!-- Пример карточки проекта 2 -->
                 <div class="project-card" data-tech="js">
-                    <img src="../images/mymelody.jpg" class="project-card__img" alt="Проект 2">
+                    <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                    <img 
+                        src="../images/mymelody.jpg" 
+                        srcset="
+                            ../images/mymelody_small.jpg 400w,
+                            ../images/mymelody_medium.jpg 800w,
+                            ../images/mymelody.jpg 1200w
+                        "
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 30vw, 25vw"
+                        class="project-card__img" 
+                        width="300" 
+                        height="200" 
+                        loading="lazy"
+                        alt="Проект 2: Курс Погружение в лор вселенной Onegai! My Melody">
                     <div class="project-card__body">
                         <h5 class="project-card__title">Курс "Погружение в лор вселенной Onegai! My Melody"</h5>
                         <p class="project-card__text">Открой для себя глубокую и трогательную историю Мелоди и её друзей.</p>
@@ -71,8 +99,22 @@
                     </div>
                 </div>
 
+                <!-- Пример карточки проекта 3 -->
                 <div class="project-card" data-tech="react api">
-                    <img src="../images/kitty2.jpg" class="project-card__img" alt="Проект 3">
+                    <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                    <img 
+                        src="../images/kitty2.jpg" 
+                        srcset="
+                            ../images/kitty2_small.jpg 400w,
+                            ../images/kitty2_medium.jpg 800w,
+                            ../images/kitty2.jpg 1200w
+                        "
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 30vw, 25vw"
+                        class="project-card__img" 
+                        width="300" 
+                        height="200" 
+                        loading="lazy"
+                        alt="Проект 3: Услуга ХеллоуКитирование">
                     <div class="project-card__body">
                         <h5 class="project-card__title">Услуга "ХеллоуКитирование"</h5>
                         <p class="project-card__text">Окружим вашего врага Хеллоу Китти</p>
@@ -84,8 +126,22 @@
                     </div>
                 </div>
 
+                <!-- Пример карточки проекта 4 -->
                 <div class="project-card" data-tech="js">
-                    <img src="../images/miffy.jpg" class="project-card__img" alt="Проект 4">
+                    <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                    <img 
+                        src="../images/miffy.jpg" 
+                        srcset="
+                            ../images/miffy_small.jpg 400w,
+                            ../images/miffy_medium.jpg 800w,
+                            ../images/miffy.jpg 1200w
+                        "
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 30vw, 25vw"
+                        class="project-card__img" 
+                        width="300" 
+                        height="200" 
+                        loading="lazy"
+                        alt="Проект 4: Услуга Поздравление с днём рождения в костюме кролика Miffy">
                     <div class="project-card__body">
                         <h5 class="project-card__title">Услуга "Поздравление с днём рождения в костюме кролика Miffy"</h5>
                         <p class="project-card__text">Самое милое поздравление! Встреть день рождения с нежностью Миффи</p>

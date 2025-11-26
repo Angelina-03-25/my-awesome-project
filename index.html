@@ -44,7 +44,20 @@
                 <h2 class="section__title">Портфолио</h2>
                 <p>Это я, смотрите:</p>
 
-                <img src="images/me.jpeg"  class="responsive-img" width="800" height="400" loading="lazy">
+                <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                <img 
+                    src="images/me.JPEG"
+                    srcset="
+                        images/me_small.JPEG 400w,
+                        images/me_medium.JPEG 800w,
+                        images/me.JPEG 1125w
+                    "
+                    sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw"
+                    class="responsive-img"
+                    width="1125" 
+                    height="632"
+                    loading="lazy"
+                    alt="Это я смотрите">
             </section>
 
 
