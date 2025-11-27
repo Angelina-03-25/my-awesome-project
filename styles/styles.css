@@ -1,19 +1,17 @@
 /* ========================================
-   ДИЗАЙН-ТОКЕНЫ (:root) - Нежно-Розовый (Светлая тема по умолчанию)
+   ДИЗАЙН-ТОКЕНЫ (:root)
    ======================================== */
 :root {
-  /* Палитра */
-  --color-bg: #fff5f7; /* Светло-розовый фон */
-  --color-fg: #8b4513; /* Тёплый коричневый текст */
-  --color-muted: #c2185b; /* Тёмно-розовый для вторичного текста */
-  --color-primary: #f8bbd0; /* Светло-розовый акцент */
-  --color-primary-dark: #ec407a; /* Ярко-розовый для :hover */
-  --color-secondary: #fce4ec; /* Очень светлый розовый */
-  --color-danger: #f44c36; /* Красный для ошибок */
-  --color-success: #4caf50; /* Зелёный (успех) */
-  --color-warning: #ff9800; /* Оранжевый (предупреждение) */
+  --color-bg: #fff5f7;
+  --color-fg: #8b4513;
+  --color-muted: #c2185b;
+  --color-primary: #f8bbd0;
+  --color-primary-dark: #ec407a;
+  --color-secondary: #fce4ec;
+  --color-danger: #f44c36;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
 
-  /* Типографика и размеры */
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -29,7 +27,6 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Скругления и тени */
   --radius-sm: 4px;
   --radius: 8px;
   --radius-lg: 12px;
@@ -43,19 +40,17 @@
    ДИЗАЙН-ТОКЕНЫ для ТЕМНОЙ темы
    ======================================== */
 body.theme-dark {
-  color-scheme: dark; /* Помогает браузеру понять, что это темная тема */
-  /* Палитра - Обычно темнее фоны, светлее текст */
-  --color-bg: #1a1a1a; /* Очень темный фон */
-  --color-fg: #e0e0e0; /* Светлый текст */
-  --color-muted: #aaaaaa; /* Светло-серый для вторичного текста */
-  --color-primary: #f7337b; /* Темно-розовый акцент (может быть ярче) */
-  --color-primary-dark: #d82f78; /* Темнее розовый для :hover */
-  --color-secondary: #c10f59; /* Темно-фиолетовый (или темно-розовый) для вторичных элементов */
-  --color-danger: #ff5252; /* Светло-красный для ошибок */
-  --color-success: #69f0ae; /* Светло-зелёный (успех) */
-  --color-warning: #ffab40; /* Светло-оранжевый (предупреждение) */
+  color-scheme: dark;
+  --color-bg: #1a1a1a;
+  --color-fg: #e0e0e0;
+  --color-muted: #aaaaaa;
+  --color-primary: #f7337b;
+  --color-primary-dark: #d82f78;
+  --color-secondary: #c10f59;
+  --color-danger: #ff5252;
+  --color-success: #69f0ae;
+  --color-warning: #ffab40;
 
-  /* Тени для темной темы могут быть менее контрастными */
   --shadow: 0 1px 3px rgba(255, 255, 255, 0.1), 0 1px 2px rgba(255, 255, 255, 0.1);
   --shadow-hover: 0 10px 20px rgba(255, 255, 255, 0.1), 0 6px 6px rgba(255, 255, 255, 0.1);
   --shadow-card: 0 4px 6px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.1);
@@ -80,9 +75,9 @@ body {
     "header"
     "main"
     "footer";
-  grid-template-rows: auto 1fr auto; /* Шапка и подвал по контенту, main - занимает остаток */
-  min-height: 100vh; /* Минимальная высота экрана */
-  margin: 0; /* Убираем стандартные отступы body */
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  margin: 0;
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-body);
@@ -95,14 +90,13 @@ body {
 
 main {
   grid-area: main;
-  /* Оставь твой текущий padding и т.д. */
 }
 
 .site-footer {
   grid-area: footer;
 }
 
-/* Базовая типографика */
+
 a:link {
   color: var(--color-primary);
   text-decoration: underline;
@@ -120,58 +114,60 @@ a:active {
   color: var(--color-primary);
 }
 
-/* Фокус-контуры */
+
 :where(a, button, input, select, textarea):focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Недоступные элементы */
+
 :disabled,
 [aria-disabled="true"] {
   opacity: .6;
   cursor: not-allowed;
 }
 
-/* Классы и контейнер */
 
-/* Центровка и ограничение ширины контейнера */
 .container {
-  width: min(100% - 2 * var(--space-lg), 1120px);
+  width: clamp(300px, 90%, 1120px); 
   margin-inline: auto;
-  padding-inline: var(--space-md);
+  padding-inline: clamp(var(--space-sm), calc(var(--space-md) - 0.5rem + 0.8vw), var(--space-lg));
 }
 
-/* Вертикальный ритм для секций */
+
 .section {
   padding-block: var(--space-xl);
 }
 
 .section__title {
   margin: 0 0 var(--space-md);
-  color: var(--color-primary); /* Применение акцентного цвета к заголовкам секций */
+  color: var(--color-primary); 
+  font-size: clamp(1.3rem, 1rem + 1.5vw, 1.8rem);
 }
 
-/* Компоненты БЭМ */
 
-/* Шапка и логотип */
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
-  background-color: var(--color-primary); /* Розовый фон шапки */
-  color: white; /* Белый текст в шапке */
+  background-color: var(--color-primary);
+  color: white;
   box-shadow: var(--shadow);
 }
 
 .site-header__logo {
   font-weight: bold;
   text-decoration: none;
-  color: white; /* Белый цвет логотипа */
+  color: white;
 }
 
-/* Навигация */
+.site-header__logo-img {
+    height: 30px;
+    width: auto;
+}
+
+
 .site-nav {
   list-style: none;
   display: flex;
@@ -179,39 +175,50 @@ a:active {
   margin: 0;
   padding: 0;
 }
+@media (max-width: 768px) {
+    .site-nav {
+        flex-direction: column;
+        gap: var(--space-md);
+        align-items: center;
+    }
 
-.site-nav__item { }
 
+    .site-nav__link {
+        display: block;
+        padding: var(--space-sm) var(--space-md);
+        text-align: center;
+    }
+}
 .site-nav__link {
   text-decoration: none;
-  color: white; /* Белый цвет ссылок в навигации */
+  color: white;
   padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius);
-  transition: background-color 0.3s ease; /* Плавный переход для :hover */
+  transition: background-color 0.3s ease;
 }
 
-/* Модификатор CTA для кнопки "Связаться" */
+
 .site-nav__link--cta {
-  background-color: var(--color-secondary); /* Очень светлый розовый */
-  color: var(--color-fg); /* Основной цвет текста */
+  background-color: var(--color-secondary);
+  color: var(--color-fg);
   font-weight: bold;
 }
 
 .site-nav__link:hover,
 .site-nav__link:focus-visible {
-  background-color: var(--color-primary-dark); /* Ярко-розовый при наведении */
+  background-color: var(--color-primary-dark);
   color: white;
   outline: 2px solid transparent;
 }
 
 .site-nav__link--cta:hover,
 .site-nav__link--cta:focus-visible {
-  background-color: var(--color-primary-dark); /* Ярко-розовый для CTA при наведении */
+  background-color: var(--color-primary-dark);
   color: white;
   outline: 2px solid transparent;
 }
 
-/* Хлебные крошки */
+
 .breadcrumbs {
   padding: var(--space-sm) 0;
   font-size: 0.9em;
@@ -243,27 +250,27 @@ a:active {
   color: var(--color-muted);
 }
 
-/* Якорные ссылки :target  */
+
 :target {
   scroll-margin-top: 2rem;
-  background-color: var(--color-secondary); /* Очень светлый розовый фон для :target */
+  background-color: var(--color-secondary);
   padding: var(--space-sm);
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
 }
 
-/* Герой-секция с фоном  */
+
 .hero {
   background:
     linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-    url('https://via.placeholder.com/1200x400  ') center/cover no-repeat;
+    url('https://via.placeholder.com/1200x400    ') center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 4rem 1rem;
   border-radius: var(--radius);
 }
 
-/* Адаптивные изображения  */
+
 .responsive-img {
   width: 100%;
   height: auto;
@@ -272,7 +279,7 @@ a:active {
   display: block;
 }
 
-/* Видео-контейнер */
+
 .video-container {
   aspect-ratio: 16/9;
   width: 100%;
@@ -289,25 +296,23 @@ a:active {
   border: none;
 }
 
-/* Модальное окно  */
-.modal {
-  /* Стили для <dialog> */
-}
+
+.modal { }
 
 dialog {
   padding: var(--space-lg);
   border: none;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-hover);
-  background-color: var(--color-bg); /* Цвет фона модального окна */
-  color: var(--color-fg); /* Цвет текста модального окна */
+  background-color: var(--color-bg);
+  color: var(--color-fg);
 }
 
 dialog::backdrop {
   background: rgba(0, 0, 0, .5);
 }
 
-/* Форма внутри модалки (БЭМ-блок) */
+
 .form {
   display: flex;
   flex-direction: column;
@@ -316,29 +321,29 @@ dialog::backdrop {
 
 .form__label {
   font-weight: bold;
-  color: var(--color-fg); /* Цвет метки */
+  color: var(--color-fg);
 }
 
 .form__control {
   width: 100%;
   max-width: 480px;
   padding: .5rem .75rem;
-  border: 2px solid var(--color-primary); /* Розовая граница */
+  border: 2px solid var(--color-primary);
   border-radius: var(--radius);
-  background: var(--color-bg); /* Цвет фона поля */
+  background: var(--color-bg);
   font: inherit;
   color: inherit;
-  transition: border-color 0.3s ease; /* Плавный переход для :focus */
+  transition: border-color 0.3s ease;
 }
 
 .form__control:focus {
     outline: none;
-    border-color: var(--color-primary-dark); /* Ярко-розовый при фокусе */
+    border-color: var(--color-primary-dark);
 }
 
 .form__hint {
   font-size: 0.85em;
-  color: var(--color-muted); /* Цвет подсказки */
+  color: var(--color-muted);
 }
 
 .form__actions {
@@ -353,17 +358,17 @@ dialog::backdrop {
   border-radius: var(--radius);
   cursor: pointer;
   font: inherit;
-  transition: all 0.3s ease; /* Плавный переход для :hover кнопок */
+  transition: all 0.3s ease;
 }
 
 .form__button--primary {
-  background: var(--color-primary); /* Розовый фон */
-  color: white; /* Белый текст */
+  background: var(--color-primary);
+  color: white;
 }
 
 .form__button--secondary {
-  background: var(--color-muted); /* Тёмно-розовый фон */
-  color: var(--color-bg); /* Цвет текста (фоновый цвет на тёмно-розовом) */
+  background: var(--color-muted);
+  color: var(--color-bg);
 }
 
 .form__button:hover,
@@ -371,20 +376,20 @@ dialog::backdrop {
   filter: brightness(0.95);
 }
 
-/* Подсветка ошибочных полей */
+
 [aria-invalid="true"] {
-  border-color: var(--color-danger); /* Красная граница ошибки */
-  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1); /* Красная тень ошибки */
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
 }
 
 [aria-invalid="true"] + .form__hint {
-  color: var(--color-danger); /* Красный цвет подсказки ошибки */
+  color: var(--color-danger);
 }
 
-/* Подвал сайта */
+
 .site-footer {
-    background-color: var(--color-primary); /* Цвет фона подвала зависит от темы */
-    color: white; /* Белый текст в подвале (может потребоваться корректировка для темной темы) */
+    background-color: var(--color-primary);
+    color: white;
     padding: var(--space-lg) var(--space-md);
     text-align: center;
     margin-top: var(--space-xl);
@@ -394,7 +399,7 @@ dialog::backdrop {
     margin: var(--space-sm) 0;
 }
 
-/* Добавим стиль для кнопки переключения темы */
+
 .theme-toggle {
     padding: 0.5rem 1rem;
     border: 2px solid var(--color-primary);
@@ -411,13 +416,11 @@ dialog::backdrop {
     color: white;
 }
 
-/* Стили для страницы мемов (Bootstrap) */
-/* Стили для хлебных крошек внутри Bootstrap контейнера на страницах, использующих Bootstrap */
+
 body :not(.page-container) .breadcrumbs {
   padding: var(--space-sm) 0;
   font-size: 0.9em;
   color: var(--color-muted);
-  /* Убираем отступы, чтобы вписаться в Bootstrap container */
   margin-left: calc(-1 * var(--space-md));
   margin-right: calc(-1 * var(--space-md));
 }
@@ -427,7 +430,7 @@ body :not(.page-container) .breadcrumbs__list {
   display: flex;
   gap: var(--space-sm);
   margin: 0;
-  padding: 0 var(--space-md); /* Возвращаем внутренние отступы */
+  padding: 0 var(--space-md);
 }
 
 body :not(.page-container) .breadcrumbs__item::after {
@@ -447,39 +450,37 @@ body :not(.page-container) .breadcrumbs__current {
   color: var(--color-muted);
 }
 
-/* Убираем тень у Bootstrap Navbar, если хочешь согласованности */
 .navbar {
     box-shadow: var(--shadow);
 }
-/* --- Стили для Bootstrap страниц (diary.html) --- */
 
-/* Переопределение цветов Bootstrap для розовой темы */
+
 :root {
-  --bs-primary: var(--color-primary); /* Используем твой розовый цвет как основной для Bootstrap */
-  --bs-primary-rgb: 248, 187, 208; /* RGB для --color-primary (#f8bbd0) */
+  --bs-primary: var(--color-primary);
+  --bs-primary-rgb: 248, 187, 208;
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-fg);
-  --bs-dark: var(--color-fg); /* Используем твой основной цвет текста для .text-dark */
-  --bs-light: var(--color-secondary); /* Используем твой светлый розовый как .bg-light */
-  --bs-light-rgb: 252, 228, 236; /* RGB для --color-secondary (#fce4ec) */
+  --bs-dark: var(--color-fg);
+  --bs-light: var(--color-secondary);
+  --bs-light-rgb: 252, 228, 236;
 }
 
-/* Применение цвета к Bootstrap компонентам */
+
 .navbar.bg-primary {
-  background-color: var(--color-primary) !important; /* Убедимся, что фон navbar розовый */
+  background-color: var(--color-primary) !important;
   border-bottom: 1px solid var(--color-primary-dark);
 }
 
 .navbar-brand, .nav-link {
-    color: white !important; /* Белый цвет текста в navbar */
+    color: white !important;
 }
 
 .nav-link:hover {
-    color: var(--color-secondary) !important; /* Светло-розовый при наведении */
+    color: var(--color-secondary) !important;
 }
 
 .nav-link.active {
-    color: var(--color-secondary) !important; /* Светло-розовый для активной ссылки */
+    color: var(--color-secondary) !important;
     font-weight: bold;
 }
 
@@ -505,7 +506,7 @@ body :not(.page-container) .breadcrumbs__current {
   color: white;
 }
 
-/* Прогресс бары */
+
 .progress-bar {
   background-color: var(--color-primary);
 }
@@ -515,10 +516,10 @@ body :not(.page-container) .breadcrumbs__current {
 }
 
 .progress-bar.bg-info {
-  background-color: var(--color-warning); /* Используем warning для React */
+  background-color: var(--color-warning);
 }
 
-/* Карточки (если будут использоваться) */
+
 .card {
   background-color: var(--color-secondary);
   border: 1px solid var(--color-primary);
@@ -530,77 +531,220 @@ body :not(.page-container) .breadcrumbs__current {
   color: var(--color-primary);
 }
 
-/* Списки (например, в дневнике) */
+
 .timeline-item {
   background-color: var(--color-secondary);
-  border-color: var(--color-primary) !important; /* Убедимся, что border-primary использует твой цвет */
+  border-color: var(--color-primary) !important;
 }
 
-/* Бейджи (status в дневнике) */
+
 .badge.bg-success {
   background-color: var(--color-success);
 }
 
 .badge.bg-warning {
   background-color: var(--color-warning);
-  color: var(--color-fg); /* Цвет текста для контраста */
+  color: var(--color-fg);
 }
 
-/* Убираем тень у Bootstrap Navbar, если хочешь согласованности */
-.navbar {
-    box-shadow: var(--shadow);
-}
 
-/* Подвал Bootstrap */
 footer.bg-primary {
-    background-color: var(--color-primary) !important; /* Убедимся, что фон footer розовый */
+    background-color: var(--color-primary) !important;
     border-top: 1px solid var(--color-primary-dark);
 }
 
-/* Стили для хлебных крошек внутри Bootstrap контейнера на страницах, использующих Bootstrap */
-body :not(.page-container) .breadcrumbs {
-  padding: var(--space-sm) 0;
-  font-size: 0.9em;
-  color: var(--color-muted);
-  /* Убираем отступы, чтобы вписаться в Bootstrap container */
-  margin-left: calc(-1 * var(--space-md));
-  margin-right: calc(-1 * var(--space-md));
-}
 
-body :not(.page-container) .breadcrumbs__list {
-  list-style: none;
-  display: flex;
-  gap: var(--space-sm);
-  margin: 0;
-  padding: 0 var(--space-md); /* Возвращаем внутренние отступы */
-}
-
-body :not(.page-container) .breadcrumbs__item::after {
-  content: "→";
-  margin: 0 var(--space-sm);
-}
-
-body :not(.page-container) .breadcrumbs__item:last-child::after {
-  content: "";
-}
-
-body :not(.page-container) .breadcrumbs__link {
-  color: var(--color-primary);
-}
-
-body :not(.page-container) .breadcrumbs__current {
-  color: var(--color-muted);
-}
-
-/* Убедимся, что основной шрифт применяется ко всему документу, включая Bootstrap компоненты */
 body, .navbar-brand, .nav-link, .btn, .card-title, .card-text, .form-label, .form-control {
     font-family: var(--font-body);
 }
-/* Стили для иконки контактов */
+
+
 .contact-icon-inline {
-    width: 24px; /* или 32px, в зависимости от желаемого размера */
-    height: auto; /* Сохраняем пропорции */
-    margin-right: 8px; /* Отступ справа от иконки до текста */
-    vertical-align: middle; /* Выравнивание по центру строки */
-    /* filter: invert(100%); /* Опционально: инвертирует цвета (белое станет чёрным и наоборот). Полезно, если хочешь, чтобы иконка "подстраивалась" под тему, но цвета должны быть контрастными) */
+    width: 24px;
+    height: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+
+.project-card {
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.project-card__img {
+  width: 100%;
+  aspect-ratio: 3 / 2; 
+  object-fit: cover; 
+  border-bottom: 1px solid var(--color-primary); 
+}
+
+.project-card__body {
+  padding: var(--space-md);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card__title {
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+}
+
+.project-card__text {
+  margin: 0 0 var(--space-md) 0;
+  flex-grow: 1;
+  color: var(--color-fg);
+}
+
+.project-card__tags {
+  margin-bottom: var(--space-md);
+}
+
+.project-card__tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-right: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: white;
+}
+
+
+.project-card__tag--primary {
+  background-color: var(--color-primary);
+}
+.project-card__tag--secondary {
+  background-color: var(--color-muted);
+}
+.project-card__tag--success {
+  background-color: var(--color-success);
+}
+.project-card__tag--info {
+  background-color: var(--color-warning);
+}
+
+.project-card__button {
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: inherit;
+  transition: all 0.3s ease;
+  background: var(--color-primary);
+  color: white;
+  width: 100%;
+}
+
+.project-card__button:hover,
+.project-card__button:focus-visible {
+  filter: brightness(0.95);
+}
+
+
+.filters {
+  margin-bottom: var(--space-lg);
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: var(--space-sm);
+}
+
+.filter-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+
+.filter-btn--active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+
+.modal-content {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  margin: 0;
+  color: white;
+  font-size: var(--font-size-xl);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: var(--space-lg);
+  flex-grow: 1;
+}
+
+.modal-footer {
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-muted);
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--color-secondary);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }

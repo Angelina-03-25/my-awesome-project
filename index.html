@@ -3,54 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Название вашего сайта</title>
-    <meta name="description" content="Краткое описание главной страницы вашего сайта">
+    <title>Lffy</title>
+    <meta name="description" content="Мой личный сайт для фронтенд и бэкенд разработки">
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/styles.css">
     <script src="scripts/main.js" defer></script>
 </head>
 <body>
-    <!-- Шапка сайта -->
     <header class="site-header">
-        <a href="index.html" class="site-header__logo">Логотип или название сайта</a>
+    <a href="index.html" class="site-header__logo">
+        <img src="assets/favicon.ico" alt="Логотип сайта" class="site-header__logo-img">
+    </a>
         <nav>
             <ul class="site-nav">
-                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link site-nav__link--cta">Главная</a></li>
                 <li class="site-nav__item"><a href="pages/projects.html" class="site-nav__link">Проекты</a></li>
-                <li class="site-nav__item"><a href="pages/diary.html" class="site-nav__link site-nav__link--cta">Дневник</a></li>
+                <li class="site-nav__item"><a href="pages/diary.html" class="site-nav__link">Дневник</a></li>
                 <li class="site-nav__item"><a href="pages/contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Уникальное основное содержимое страницы -->
     <main>
         <div class="container">
-            <h1>Добро пожаловать на наш сайт!</h1>
+            <h1>Добро пожаловать на мой сайт!</h1>
 
-            <!-- Секция 1 с якорем -->
             <section id="services" class="section">
                 <h2 class="section__title">Наши услуги</h2>
-                <p>Описание предоставляемых услуг...</p>
+                <ul> 
+                    <li>Курс "Основы мира Hello, Kitty!"</li> 
+                    <li>Курс "Погружение в лор вселенной Onegai! My Melody."</li>   
+                    <li>Услуга "ХеллоуКитирование"(окружим вашего врага кучей Хеллоу Китти)</li>
+                    <li>Услуга "Поздравление с днем рождения в костюме кролика Miffy"</li> 
+                </ul> 
                 <a href="#contacts">Связаться с нами</a>
             </section>
 
-            <!-- Секция 2 с якорем -->
+
             <section id="portfolio" class="section">
                 <h2 class="section__title">Портфолио</h2>
-                <p>Кот рыжий смотрите:</p>
-                <!-- Пример responsive-изображения с атрибутами width/height -->
-                <img src="images/cat.jpeg"  class="responsive-img" width="800" height="400" loading="lazy">
+                <p>Это я, смотрите:</p>
+
+                <!-- ИЗМЕНЕНО: Добавлены srcset, sizes, width, height, loading для изображения -->
+                <img 
+                    src="images/me.JPEG"
+                    srcset="
+                        images/me_small.JPEG 400w,
+                        images/me_medium.JPEG 800w,
+                        images/me.JPEG 1125w
+                    "
+                    sizes="(max-width: 600px) 90vw, (max-width: 1000px) 45vw, 30vw"
+                    class="responsive-img"
+                    width="1125" 
+                    height="632"
+                    loading="lazy"
+                    alt="Это я смотрите">
             </section>
 
-            <!-- Секция 3 с якорем -->
+
             <section id="contacts" class="section">
                 <h2 class="section__title">Контактная информация</h2>
 
-                <!-- Кнопка открытия модалки -->
+
                 <button id="openDialog" type="button" class="form__button form__button--primary">Написать нам</button>
 
-                <!-- Модалка с формой -->
+
                 <dialog id="contactDialog" class="modal" aria-labelledby="dialogTitle">
                     <h2 id="dialogTitle" class="modal__title">Обратная связь</h2>
                     <form id="contactForm" class="form" method="dialog" novalidate>
@@ -84,18 +101,18 @@
                     </form>
                 </dialog>
 
-                <p>Наши контакты...</p>
+                <p>tg: @an_lffy</p>
+                <p>gh: Angelina-03-25</p>
                 <a href="pages/contacts.html">Подробнее</a>
             </section>
         </div>
     </main>
 
-    <!-- Подвал сайта -->
+
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2025 Название вашего сайта. Все права защищены.</p>
+            <p>&copy; 2025 Личная страница. Все права защищены.</p>
             <p>Телефон: +7 (123) 456-78-90</p>
-            <!-- Кнопка переключения темы -->
             <button id="themeToggle" class="theme-toggle">Переключить тему</button>
         </div>
     </footer>

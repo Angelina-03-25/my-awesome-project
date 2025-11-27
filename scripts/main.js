@@ -1,26 +1,26 @@
 // Функция для переключения темы
 function toggleTheme() {
-  // Проверяем, есть ли у body класс 'theme-dark'
+
   if (document.body.classList.contains('theme-dark')) {
-    // Если есть, удаляем его (возвращаемся к светлой теме)
+
     document.body.classList.remove('theme-dark');
-    // Сохраняем выбор в localStorage
+
     localStorage.setItem('theme', 'light');
-    // Меняем текст кнопки
+
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) themeToggleBtn.textContent = 'Переключить тему';
   } else {
-    // Если нет, добавляем его (переходим к темной теме)
+
     document.body.classList.add('theme-dark');
-    // Сохраняем выбор в localStorage
+
     localStorage.setItem('theme', 'dark');
-    // Меняем текст кнопки
+
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) themeToggleBtn.textContent = 'Светлая тема';
   }
 }
 
-// Проверяем сохранённую тему в localStorage при загрузке страницы
+
 function applySavedTheme() {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
@@ -28,78 +28,73 @@ function applySavedTheme() {
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) themeToggleBtn.textContent = 'Светлая тема';
   } else {
-    // Если тема не сохранена или 'light', оставляем светлую (ничего не делаем)
+
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) themeToggleBtn.textContent = 'Переключить тему';
   }
 }
 
-// Применяем сохранённую тему при загрузке
+
 applySavedTheme();
 
-// Добавляем обработчик события клика к кнопке (если она существует на странице)
+
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) {
       themeToggleBtn.addEventListener('click', toggleTheme);
     }
-    // --- Твоя существующая логика для модального окна и маски телефона ---
-    // Получаем элементы модального окна и формы
     const dlg = document.getElementById('contactDialog');
     const openBtn = document.getElementById('openDialog');
     const closeBtn = document.getElementById('closeDialog');
     const form = document.getElementById('contactForm');
     let lastActive = null;
 
-    // Открытие модального окна
+
     if (openBtn && dlg) {
         openBtn.addEventListener('click', () => {
             lastActive = document.activeElement;
             dlg.showModal();
-            // Фокус на первое поле формы
+
             dlg.querySelector('.form__control')?.focus();
         });
     }
 
-    // Закрытие модального окна по кнопке
+
     if (closeBtn && dlg) {
         closeBtn.addEventListener('click', () => dlg.close('cancel'));
     }
 
-    // Обработчик отправки формы (исправленная версия)
+
     if (form && dlg) {
         form.addEventListener('submit', (e) => {
-            // Очищаем кастомные сообщения об ошибках
+
             [...form.elements].forEach(el => el.setCustomValidity?.(''));
 
-            // Если форма не валидна
+
             if (!form.checkValidity()) {
                 e.preventDefault();
 
-                // Кастомное сообщение для email
                 const email = form.elements.email;
                 if (email?.validity.typeMismatch) {
                     email.setCustomValidity('Введите корректный e-mail, например name@example.com');
                 }
 
-                // Показываем стандартные сообщения браузера
+
                 form.reportValidity();
 
-                // Устанавливаем aria-invalid для невалидных полей
                 [...form.elements].forEach(el => {
                     if (el.willValidate) el.toggleAttribute('aria-invalid', !el.checkValidity());
                 });
                 return;
             }
 
-            // Если форма валидна — закрываем диалог и сбрасываем форму
+
             e.preventDefault();
             dlg.close('success');
             form.reset();
         });
     }
 
-    // Возвращаем фокус на кнопку открытия после закрытия модалки
     if (dlg) {
         dlg.addEventListener('close', () => {
             lastActive?.focus();
@@ -123,3 +118,83 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// --- Функции для модального окна добавления записи в дневник (pages/diary.html) ---
+let addEntryModalInstance = null; // Глобальная переменная для хранения ссылки на модалку
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Пытаемся найти модальное окно добавления записи на странице
+    const modalElement = document.getElementById('addEntryModal');
+    if (modalElement) {
+        // Если нашли, сохраняем ссылку
+        addEntryModalInstance = modalElement;
+
+        // Добавляем обработчик клика на backdrop для закрытия
+        addEntryModalInstance.addEventListener('click', (event) => {
+            if (event.target === addEntryModalInstance) {
+                closeAddEntryModal();
+            }
+        });
+    }
+    // Если не нашли - ничего не делаем, видимо, это не та страница
+});
+
+function openAddEntryModal() {
+    if (addEntryModalInstance) {
+        // Очищаем форму перед открытием
+        const form = document.getElementById('addEntryForm');
+        if (form) {
+            form.reset();
+        }
+        // Открываем модальное окно
+        addEntryModalInstance.showModal();
+    } else {
+        console.error("Модальное окно 'addEntryModal' не найдено на этой странице.");
+        // alert("Ошибка: Модальное окно не найдено!"); // Опционально, для отладки
+    }
+}
+
+function closeAddEntryModal() {
+    if (addEntryModalInstance) {
+        addEntryModalInstance.close();
+    }
+}
+
+// --- Функция для обработки отправки формы новой записи (pages/diary.html) ---
+function submitNewEntry() {
+    if (!addEntryModalInstance) {
+         console.error("Модальное окно 'addEntryModal' не найдено.");
+         return;
+    }
+    const form = document.getElementById('addEntryForm');
+    if (!form) {
+         console.error("Форма 'addEntryForm' не найдена.");
+         return;
+    }
+    const formData = new FormData(form);
+
+    // Простая валидация
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    // Собираем данные формы
+    const data = {
+        date: formData.get('entryDate'),
+        topic: formData.get('entryTopic'),
+        content: formData.get('entryContent'),
+        tags: formData.get('entryTags').split(',').map(tag => tag.trim()).filter(tag => tag),
+        status: formData.get('entryStatus')
+    };
+
+    // В реальном приложении здесь был бы AJAX-запрос или добавление в localStorage/IndexedDB
+    console.log('Новая запись в дневник (из main.js):', data);
+    alert(`Запись "${data.topic}" добавлена! (Это демо, данные не сохранены на сервере)`);
+
+    // Закрываем модальное окно
+    closeAddEntryModal();
+    // Здесь можно добавить логику для обновления DOM (добавления новой записи на страницу)
+    // Пока просто перезагрузим страницу, чтобы увидеть эффект (не лучший способ, но для демо сойдёт)
+    // location.reload();
+}
